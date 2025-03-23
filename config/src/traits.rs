@@ -1,7 +1,12 @@
 pub trait ConfigStruct {
-    fn load(path: String) -> anyhow::Result<Self>
+    fn load(_: String) -> anyhow::Result<Self>
     where
-        Self: std::marker::Sized;
+        Self: std::marker::Sized + Default,
+    {
+        Ok(Self::default())
+    }
 
-    fn healthcheck(&self) -> bool;
+    fn healthcheck(&self) -> bool {
+        true
+    }
 }

@@ -4,5 +4,6 @@ mod structs;
 mod test;
 mod traits;
 
+pub use crate::structs::Config;
 pub use crate::structs::Volumes;
 pub use crate::traits::ConfigStruct;
