@@ -1,5 +1,0 @@
-[options]
-command = "/usr/bin/mpv"
-
-[volumes]
-dirs = ["/mnt/diskd/Cartoons/Adventure Time (1080p HEVC)/"]

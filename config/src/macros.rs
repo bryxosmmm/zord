@@ -1,6 +1,6 @@
 #[macro_export]
 macro_rules! config {
-    ($p:literal) => {{
+    ($p:expr) => {{
         let volume = Config::load($p.into());
         volume
     }};

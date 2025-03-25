@@ -68,12 +68,12 @@ body {
     color: rgba(255, 255, 255, 0.5);
 }
 
-.not-found {
+.error {
     margin-top: 20px;
     text-align: center;
 }
 
-.not-found h1 {
+.error h1 {
     font-size: 150px;
     font-weight: bold;
     color: #e0e0e0;
@@ -81,9 +81,8 @@ body {
     margin-bottom: 20px;
 }
 
-.not-found h2 {
+.error h2 {
     font-size: 24px;
     color: #666;
     margin-bottom: 10px;
 }
-

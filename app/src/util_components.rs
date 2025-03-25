@@ -7,7 +7,7 @@ use dioxus::{
 #[component]
 pub fn Error(err: ReadOnlySignal<anyhow::Error>) -> Element {
     rsx! {
-        div { class: "not-found",
+        div { class: "error",
             h1 { "Oops!" }
             h2 { "{err}" }
         }
@@ -17,7 +17,7 @@ pub fn Error(err: ReadOnlySignal<anyhow::Error>) -> Element {
 #[component]
 pub fn NotFound() -> Element {
     rsx! {
-        div { class: "not-found",
+        div { class: "error",
             h1 { "404" }
             h2 { "Not found" }
         }

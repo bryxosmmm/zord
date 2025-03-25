@@ -10,43 +10,40 @@ use utils::{handle_click, sort};
 mod util_components;
 mod utils;
 
-const MAIN_CSS: Asset = asset!("/public/main.css");
-
 fn main() {
+    let header = r#"<link rel="stylesheet" href="/usr/share/zord/main.css">"#.to_string();
     let window = desktop::WindowBuilder::default()
         .with_decorations(false)
         .with_resizable(false)
         .with_inner_size(desktop::LogicalSize::new(800, 600));
-    let config = desktop::Config::default().with_window(window);
+    let config = desktop::Config::default()
+        .with_window(window)
+        .with_custom_head(header);
     LaunchBuilder::desktop().with_cfg(config).launch(App);
 }
 
 #[component]
 fn App() -> Element {
     let bind = utils::load();
-    match bind {
-        Ok(v) => rsx!(Main { config: v }),
-        Err(err) => rsx!(Error { err }),
-    }
-}
-
-#[component]
-fn Main(config: ReadOnlySignal<Config>) -> Element {
     let mut input = use_signal(|| "".to_string());
     rsx! {
-        document::Link { rel: "stylesheet", href: MAIN_CSS }
-        div {
-            div {
-                id: "input-box",
-                onkeypress: move |e| handle_keyboard(e.key()),
+        div { onkeypress: move |e| handle_keyboard(e.key()),
+            div { id: "input-box",
                 input {
                     class: "search-input",
                     autofocus: true,
                     oninput: move |event| input.set(event.value()),
-                    placeholder: "Enter smth...",
+                    placeholder: "Search...",
+                }
+                match bind {
+                    Ok(config) => rsx! {
+                        List { config, input }
+                    },
+                    Err(err) => rsx! {
+                        Error { err }
+                    },
                 }
             }
-            List { config, input }
         }
     }
 }
@@ -90,7 +87,9 @@ fn List(config: ReadOnlySignal<Config>, input: ReadOnlySignal<String>) -> Elemen
                         }
                     }
                 }
-                None => rsx! {NotFound {} },
+                None => rsx! {
+                    NotFound {}
+                },
             }
         }
     }

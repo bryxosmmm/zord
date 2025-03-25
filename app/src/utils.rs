@@ -17,7 +17,9 @@ use config::config;
 use rayon::prelude::*;
 
 pub fn load() -> anyhow::Result<Config> {
-    let config: Config = config!("./config.toml")?;
+    let home = env!("HOME");
+    let path = format!("{home}/.config/zord/config.toml");
+    let config: Config = config!(path)?;
     if !config.healthcheck() {
         return Err(anyhow::anyhow!("Healthcheck failed"));
     }
@@ -27,7 +29,7 @@ pub fn load() -> anyhow::Result<Config> {
 pub fn load_list(dirs: Vec<String>) -> Vec<fs::Metadata> {
     dirs.par_iter()
         .map(|entry| {
-            let files = files!(entry => "**/*.mkv");
+            let files = files!(entry => "**/*.mkv", "**/*.avi", "**/.mp4");
             Files::from(files).inner()
         })
         .flatten()
