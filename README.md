@@ -5,7 +5,7 @@ Zord is an application designed for comfortably browsing and selecting videos on
 I'm kinda lazy, so there are no packages available on AUR *yet*.  
 To install Zord manually, follow these steps:
 ```bash
-git clone REPO_HERE
+git clone https://github.com/bryxosmmm/zord.git
 cd zord 
 make build 
 make install 
@@ -26,6 +26,7 @@ command = "/usr/bin/mpv"
 
 ## Screenshots
 ![image](./assets/example.png)
+![image](./assets/notfound.png) 
 
 ## License
 This project is licensed under the MIT License.
