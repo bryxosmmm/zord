@@ -2,4 +2,4 @@
 command = "/usr/bin/mpv"
 
 [volumes]
-dirs = ["/usr/bin/bash"]
+dirs = []

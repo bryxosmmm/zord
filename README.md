@@ -25,7 +25,8 @@ command = "/usr/bin/mpv"
 - The `options.command` field should point to your preferred video player (e.g., `mpv`).
 
 ## Screenshots
-![image](./assets/example.png) ![image](./assets/notfound.png) 
+![image](./assets/example.png)
+![image](./assets/notfound.png) 
 
 ## License
 This project is licensed under the MIT License.
